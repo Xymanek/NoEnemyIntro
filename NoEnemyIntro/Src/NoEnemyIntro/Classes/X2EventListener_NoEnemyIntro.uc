@@ -1,6 +1,6 @@
-class X2EventListener_NoEnemyIntro extends X2EventListener;
+class X2EventListener_NoEnemyIntro extends X2EventListener config(NoEnemyIntro);
 
-// TODO: Exclusion list (for rulers)
+var config array<name> WhitelistCharaters;
 
 static function array<X2DataTemplate> CreateTemplates()
 {
@@ -31,6 +31,8 @@ static protected function EventListenerReturn EnemyGroupSighted (Object EventDat
 	// Do not handle it here, It's handled in ScamperBegin listener
 	ChangeContainer = XComGameStateContext_ChangeContainer(GameState.GetContext());
 	if (ChangeContainer == none) return ELR_NoInterrupt;
+
+	if (IsWhitelisted(XComGameState_AIGroup(EventData))) return ELR_NoInterrupt;
 
 	if (ChangeContainer.BuildVisualizationFn != none)
 	{
@@ -141,10 +143,26 @@ static protected function EventListenerReturn ScamperBegin (Object EventData, Ob
 {
 	local XComGameStateContext_RevealAI RevealContext;
 
+	if (IsWhitelisted(XComGameState_AIGroup(EventData))) return ELR_NoInterrupt;
+
 	RevealContext = XComGameStateContext_RevealAI(GameState.GetContext());
 
 	RevealContext.FirstEncounterCharacterTemplate = none;
 	RevealContext.FirstSightingMoment = none;
 
 	return ELR_NoInterrupt;
+}
+
+///////////////
+/// Helpers ///
+///////////////
+
+static protected function bool IsWhitelisted (XComGameState_AIGroup GroupState)
+{
+	local XComGameState_Unit GroupLeaderUnitState;
+
+	// We don't care about getting the correct history frame here, as we only care about the template name - which is the same all the time
+	GroupLeaderUnitState = XComGameState_Unit(`XCOMHISTORY.GetGameStateForObjectID(GroupState.m_arrMembers[0].ObjectID));
+
+	return default.WhitelistCharaters.Find(GroupLeaderUnitState.GetMyTemplateName()) != INDEX_NONE;
 }

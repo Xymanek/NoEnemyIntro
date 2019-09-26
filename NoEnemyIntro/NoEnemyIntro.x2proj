@@ -22,6 +22,9 @@ Supersedes "[WOTC] Disable "First Seen" VO" and fixes a couple of issues which t
     <Folder Include="Src\NoEnemyIntro\Classes\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\XComNoEnemyIntro.ini">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="ReadMe.txt" />
     <Content Include="ModPreview.jpg" />
     <Content Include="Config\XComEditor.ini" />
