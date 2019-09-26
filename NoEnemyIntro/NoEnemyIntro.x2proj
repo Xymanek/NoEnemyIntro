@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Default" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Guid>b8ef5d69-702b-4e0d-a71a-0c8297cd851b</Guid>
+    <Name>No Enemy Intro</Name>
+    <Description>This mod disables enemy introduction voice lines. Perhaps you already know that Sectoids have human DNA?
+
+Supersedes "[WOTC] Disable "First Seen" VO" and fixes a couple of issues which that implementation has</Description>
+    <SteamPublishID>0</SteamPublishID>
+    <AssemblyName>NoEnemyIntro</AssemblyName>
+    <RootNamespace>NoEnemyIntro</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Config\" />
+    <Folder Include="Content\" />
+    <Folder Include="Localization\" />
+    <Folder Include="Src\" />
+    <Folder Include="Src\NoEnemyIntro\" />
+    <Folder Include="Src\NoEnemyIntro\Classes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReadMe.txt" />
+    <Content Include="ModPreview.jpg" />
+    <Content Include="Config\XComEditor.ini" />
+    <Content Include="Config\XComEngine.ini" />
+    <Content Include="Config\XComGame.ini" />
+    <Content Include="Localization\NoEnemyIntro.int" />
+    <Content Include="Src\NoEnemyIntro\Classes\NEI_CHEventListenerTemplate.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\NoEnemyIntro\Classes\X2DownloadableContentInfo_NoEnemyIntro.uc" />
+    <Content Include="Src\NoEnemyIntro\Classes\X2EventListener_NoEnemyIntro.uc">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildLocalExtensionPath)\XCOM2.targets" />
+</Project>
