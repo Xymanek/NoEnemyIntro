@@ -33,9 +33,13 @@ static protected function EventListenerReturn EnemyGroupSighted (Object EventDat
 	RevealContext = XComGameStateContext_RevealAI(Context);
 	if (RevealContext != none) return ELR_NoInterrupt;
 
-	Context.BuildVisualizationDelegate = BuildVisualizationForFirstSightingOfEnemyGroup;
+	if (Context.BuildVisualizationDelegate != none)
+	{
+		Context.BuildVisualizationDelegate = BuildVisualizationForFirstSightingOfEnemyGroup;
+	}
 }
 
+// Copy paste of the vanilla version, but with all the "First seen VO"-related code removed
 static protected function BuildVisualizationForFirstSightingOfEnemyGroup (XComGameState VisualizeGameState)
 {
 	local VisualizationActionMetadata ActionMetadata, EmptyMetadata;
