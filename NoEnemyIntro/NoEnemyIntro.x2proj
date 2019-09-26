@@ -29,12 +29,10 @@ Supersedes "[WOTC] Disable "First Seen" VO" and fixes a couple of issues which t
     <Content Include="ModPreview.jpg" />
     <Content Include="Config\XComEditor.ini" />
     <Content Include="Config\XComEngine.ini" />
-    <Content Include="Config\XComGame.ini" />
     <Content Include="Localization\NoEnemyIntro.int" />
     <Content Include="Src\NoEnemyIntro\Classes\NEI_CHEventListenerTemplate.uc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Src\NoEnemyIntro\Classes\X2DownloadableContentInfo_NoEnemyIntro.uc" />
     <Content Include="Src\NoEnemyIntro\Classes\X2EventListener_NoEnemyIntro.uc">
       <SubType>Content</SubType>
     </Content>

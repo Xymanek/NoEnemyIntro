@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # XCOM ModBuddy Solution File, Format Version 11.00
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{5DAE07AF-E217-45C1-8DE7-FF99D6011E8A}") = "NoEnemyIntro", "NoEnemyIntro\NoEnemyIntro.x2proj", "{AE17B6C8-48C7-4F4B-87E8-CDC873355CF7}"
+Project("{5DAE07AF-E217-45C1-8DE7-FF99D6011E8A}") = "NoEnemyIntro", "NoEnemyIntro\NoEnemyIntro.x2proj", "{729B63CD-31D2-43AC-9845-2B0BA2E0B21F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Default|XCOM 2 = Default|XCOM 2
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AE17B6C8-48C7-4F4B-87E8-CDC873355CF7}.Debug|XCOM 2.ActiveCfg = Debug|XCOM 2
-		{AE17B6C8-48C7-4F4B-87E8-CDC873355CF7}.Debug|XCOM 2.Build.0 = Debug|XCOM 2
-		{AE17B6C8-48C7-4F4B-87E8-CDC873355CF7}.Default|XCOM 2.ActiveCfg = Default|XCOM 2
-		{AE17B6C8-48C7-4F4B-87E8-CDC873355CF7}.Default|XCOM 2.Build.0 = Default|XCOM 2
+		{729B63CD-31D2-43AC-9845-2B0BA2E0B21F}.Debug|XCOM 2.ActiveCfg = Debug|XCOM 2
+		{729B63CD-31D2-43AC-9845-2B0BA2E0B21F}.Debug|XCOM 2.Build.0 = Debug|XCOM 2
+		{729B63CD-31D2-43AC-9845-2B0BA2E0B21F}.Default|XCOM 2.ActiveCfg = Default|XCOM 2
+		{729B63CD-31D2-43AC-9845-2B0BA2E0B21F}.Default|XCOM 2.Build.0 = Default|XCOM 2
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
