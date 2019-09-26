@@ -15,7 +15,7 @@ static function NEI_CHEventListenerTemplate CreateNoEnemyIntroListeners()
 
 	`CREATE_X2TEMPLATE(class'NEI_CHEventListenerTemplate', Template, 'NoEnemyIntro');
 	Template.AddCHEvent('EnemyGroupSighted', EnemyGroupSighted, ELD_Immediate);
-	//Template.AddCHEvent('ScamperBegin', ScamperBegin, ELD_Immediate);
+	Template.AddCHEvent('ScamperBegin', ScamperBegin, ELD_Immediate);
 	Template.RegisterInTactical = true;
 
 	return Template;
@@ -37,6 +37,8 @@ static protected function EventListenerReturn EnemyGroupSighted (Object EventDat
 	{
 		Context.BuildVisualizationDelegate = BuildVisualizationForFirstSightingOfEnemyGroup;
 	}
+
+	return ELR_NoInterrupt;
 }
 
 // Copy paste of the vanilla version, but with all the "First seen VO"-related code removed
@@ -134,4 +136,16 @@ static protected function BuildVisualizationForFirstSightingOfEnemyGroup (XComGa
 			DelayAction.Duration = 1.0;
 		}
 	}
+}
+
+static protected function EventListenerReturn ScamperBegin (Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
+{
+	local XComGameStateContext_RevealAI RevealContext;
+
+	RevealContext = XComGameStateContext_RevealAI(GameState.GetContext());
+
+	RevealContext.FirstEncounterCharacterTemplate = none;
+	RevealContext.FirstSightingMoment = none;
+
+	return ELR_NoInterrupt;
 }
