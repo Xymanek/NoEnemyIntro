@@ -1,5 +1,7 @@
 class X2EventListener_NoEnemyIntro extends X2EventListener;
 
+// TODO: Exclusion list (for rulers)
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -23,19 +25,16 @@ static function NEI_CHEventListenerTemplate CreateNoEnemyIntroListeners()
 
 static protected function EventListenerReturn EnemyGroupSighted (Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
-	local XComGameStateContext_RevealAI RevealContext;
-	local XComGameStateContext Context;
+	local XComGameStateContext_ChangeContainer ChangeContainer;
 
-	Context = GameState.GetContext();
+	// If it's not XComGameStateContext_ChangeContainer then it's a reveal
+	// Do not handle it here, It's handled in ScamperBegin listener
+	ChangeContainer = XComGameStateContext_ChangeContainer(GameState.GetContext());
+	if (ChangeContainer == none) return ELR_NoInterrupt;
 
-	// If the first time we see this group is also when we activate it, do not handle it here
-	// It's handled in ScamperBegin listener
-	RevealContext = XComGameStateContext_RevealAI(Context);
-	if (RevealContext != none) return ELR_NoInterrupt;
-
-	if (Context.BuildVisualizationDelegate != none)
+	if (ChangeContainer.BuildVisualizationFn != none)
 	{
-		Context.BuildVisualizationDelegate = BuildVisualizationForFirstSightingOfEnemyGroup;
+		ChangeContainer.BuildVisualizationFn = BuildVisualizationForFirstSightingOfEnemyGroup;
 	}
 
 	return ELR_NoInterrupt;
